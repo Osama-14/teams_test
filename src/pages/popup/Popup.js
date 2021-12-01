@@ -2,8 +2,7 @@ import React from "react";
 import "../../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Popup() {
-    
+function Popup({ setTeamName, setCategory, setMEmail, addToArray }) {
   return (
     <div>
       <button
@@ -31,13 +30,13 @@ function Popup() {
                 <input
                   type="text"
                   name=""
-                  id="teamname"
+                  onChange={(e) => setTeamName(e.target.value)}
                   placeholder="Team Name"
                 />
               </div>
 
               <div class="options">
-                <select name="" id="category">
+                <select name="" onChange={(e) => setCategory(e.target.value)}>
                   <option value="">Category</option>
                   <option value="Developer">Developer</option>
                   <option value="Backend">Backend</option>
@@ -49,15 +48,13 @@ function Popup() {
                 <input
                   type="text"
                   name=""
+                  onChange={(e) => setMEmail(e.target.value)}
                   placeholder="Members type (Email)"
-                  id="members"
                 />
               </div>
 
               <div class="allbtn">
-                <button class="btn1" onclick="createNewTeam()">
-                  Create
-                </button>
+                <button class="btn1" onClick={addToArray}>Create</button>
                 <button class="btn2" data-bs-dismiss="modal">
                   Cancel
                 </button>

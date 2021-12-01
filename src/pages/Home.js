@@ -1,17 +1,44 @@
- import React from "react";
- import Popup from "../pages/popup/Popup";
+import React, { useState } from "react";
+import Popup from "../pages/popup/Popup";
 
 function Home() {
+  const [team, setTeamName] = useState("");
+  const [categoy, setCategory] = useState("");
+  const [mEmail, setMEmail] = useState("");
+  const [memberArray, setMemberArray] = useState(null);
 
-      
-        return (
-          <div>
-            <Popup/>
+  const addToArray = () => {
+    let obj = {
+      team: team,
+      categoy: categoy,
+      mEmail: mEmail,
+    };
+    console.log(memberArray);
+    setMemberArray((memberArray) =>
+      memberArray ? [obj, ...memberArray] : [obj]
+    );
+  };
 
+  return (
+    <div>
+
+      {memberArray &&
+        memberArray.length > 0 &&
+        memberArray.map((val, ind) => (
+          <div key={ind}>
+            <div>TeamName: {val.team}</div>
+            <div>Category: {val.categoy}</div>
+            <div>Member Email: {val.mEmail}</div>
           </div>
+        ))}
+      <Popup
+        setTeamName={setTeamName}
+        setCategory={setCategory}
+        setMEmail={setMEmail}
+        addToArray={addToArray}
+      />
+    </div>
+  );
+}
 
-  )};
-
-  
-  export default Home;
-  
+export default Home;
