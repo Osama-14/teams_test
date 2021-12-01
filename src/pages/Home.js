@@ -26,9 +26,9 @@ function Home() {
         memberArray.length > 0 &&
         memberArray.map((val, ind) => (
           <div key={ind}>
-            <div>TeamName: {val.team}</div>
-            <div>Category: {val.categoy}</div>
-            <div>Member Email: {val.mEmail}</div>
+            <div> <span className="spanName">TeamName:</span> {val.team}</div>
+            <div><span  className="spanName">Category:</span> {val.categoy}</div>
+            <div><span  className="spanName">Members:</span> {val.mEmail}</div>
           </div>
         ))}
       <Popup
